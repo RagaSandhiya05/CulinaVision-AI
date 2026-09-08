@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CulinaVision AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="main-container">
+
+        <header class="hero">
+
+            <div class="brand">
+                <div class="brand-icon">🔍</div>
+                <span>CulinaVision</span>
+                <span class="brand-ai">AI</span>
+            </div>
+
+            <h1>
+                From Food Image
+                <span>to Delicious Recipe</span>
+            </h1>
+
+            <p class="hero-description">
+                Upload a picture of your food and let AI identify the dish,
+                estimate ingredients, and create a personalized recipe for you.
+            </p>
+
+        </header>
+
+        <section class="main-card">
+
+            <div class="upload-area" id="dropZone">
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/jpeg,image/png,image/webp"
+                    hidden
+                >
+
+                <div class="upload-icon">📸</div>
+
+                <h2>Upload Your Food Image</h2>
+
+                <p>
+                    Drag &amp; drop your image here or browse your device
+                </p>
+
+                <button
+                    type="button"
+                    class="browse-btn"
+                    id="browseBtn"
+                >
+                    📁 Browse Image
+                </button>
+
+                <span class="file-info">
+                    JPG, JPEG, PNG, WEBP • Max 10MB
+                </span>
+
+            </div>
+
+            <div
+                class="preview-container"
+                id="previewContainer"
+                hidden
+            >
+
+                <img
+                    id="imagePreview"
+                    src=""
+                    alt="Selected food image"
+                >
+
+                <button
+                    type="button"
+                    class="remove-image"
+                    id="removeBtn"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+            <section class="preferences-section">
+
+                <div class="section-header">
+
+                    <div class="section-title">
+                        <span class="section-icon">🍳</span>
+                        <h2>Customize Your Recipe</h2>
+                    </div>
+
+                    <p>
+                        Tell CulinaVision how you'd like your recipe prepared.
+                    </p>
+
+                </div>
+
+                <div class="preferences-grid">
+
+                    <div class="preference-group">
+
+                        <label for="spiceLevel">
+                            🌶️ Spice Level
+                        </label>
+
+                        <select id="spiceLevel">
+
+                            <option value="Mild">
+                                Mild
+                            </option>
+
+                            <option value="Medium" selected>
+                                Medium
+                            </option>
+
+                            <option value="Spicy">
+                                Spicy
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="preference-group">
+
+                        <label for="servings">
+                            🍽️ Servings
+                        </label>
+
+                        <select id="servings">
+
+                            <option value="1">1</option>
+                            <option value="2" selected>2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="preference-group">
+
+                        <label for="diet">
+                            🥗 Dietary Preference
+                        </label>
+
+                        <select id="diet">
+
+                            <option value="Any">
+                                Any
+                            </option>
+
+                            <option value="Vegetarian">
+                                Vegetarian
+                            </option>
+
+                            <option value="Vegan">
+                                Vegan
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="preference-group">
+
+                        <label for="cookingTime">
+                            ⏱️ Cooking Time
+                        </label>
+
+                        <select id="cookingTime">
+
+                            <option value="No Preference">
+                                No Preference
+                            </option>
+
+                            <option value="Quick">
+                                Quick — under 30 minutes
+                            </option>
+
+                            <option value="Normal">
+                                Normal — 30–60 minutes
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="preference-group">
+
+                        <label for="cuisine">
+                            🌍 Cuisine
+                        </label>
+
+                        <select id="cuisine">
+
+                            <option value="No Preference">
+                                No Preference
+                            </option>
+
+                            <option value="Indian">
+                                Indian
+                            </option>
+
+                            <option value="Italian">
+                                Italian
+                            </option>
+
+                            <option value="Asian">
+                                Asian
+                            </option>
+
+                            <option value="Mexican">
+                                Mexican
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="preference-group">
+
+                        <label for="allergies">
+                            🚫 Allergies
+                        </label>
+
+                        <input
+                            type="text"
+                            id="allergies"
+                            placeholder="e.g. peanuts, milk"
+                        >
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <button
+                type="button"
+                class="generate-btn"
+                id="generateBtn"
+                disabled
+            >
+                ✨ Generate Recipe
+            </button>
+
+            <section
+                class="loading-section"
+                id="loadingSection"
+                hidden
+            >
+
+                <div class="loader"></div>
+
+                <h3>
+                    Creating Your Recipe...
+                </h3>
+
+                <p>
+                    CulinaVision is analyzing your food and preparing
+                    a personalized recipe.
+                </p>
+
+            </section>
+
+            <div
+                class="error-message"
+                id="errorMessage"
+                hidden
+            >
+
+                <span>⚠️</span>
+
+                <p id="errorText">
+                    Something went wrong.
+                </p>
+
+            </div>
+
+            <section
+                class="results-section"
+                id="resultsSection"
+                hidden
+            >
+
+                <div class="detection-card">
+
+                    <div class="result-icon">
+                        🍽️
+                    </div>
+
+                    <div class="detection-info">
+
+                        <span class="result-label">
+                            Detected Dish
+                        </span>
+
+                        <h2 id="dishName">
+                            Unknown Dish
+                        </h2>
+
+                        <div class="confidence-container">
+
+                            <span>
+                                AI Confidence
+                            </span>
+
+                            <strong id="confidence">
+                                N/A
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="ingredients-card">
+
+                    <div class="result-heading">
+
+                        <span>🥕</span>
+
+                        <h3>
+                            Estimated Ingredients
+                        </h3>
+
+                    </div>
+
+                    <ul id="ingredientsList"></ul>
+
+                </div>
+
+                <div class="recipe-card">
+
+                    <div class="result-heading">
+
+                        <span>👨‍🍳</span>
+
+                        <h3>
+                            Your Personalized Recipe
+                        </h3>
+
+                    </div>
+
+                    <div
+                        class="recipe-content"
+                        id="recipeContent"
+                    ></div>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="generate-again-btn"
+                    id="generateAgainBtn"
+                >
+                    🔄 Generate Another Recipe
+                </button>
+
+            </section>
+
+            <section
+                class="history-section"
+                id="historySection"
+            >
+
+                <div class="history-header">
+
+                    <div class="history-title-area">
+
+                        <div class="section-title">
+
+                            <span>📚</span>
+
+                            <h2>
+                                Recipe History
+                            </h2>
+
+                        </div>
+
+                        <p>
+                            Your previously generated recipes
+                        </p>
+
+                    </div>
+
+                    <div class="history-controls">
+
+                        <div class="history-tabs">
+
+                            <button
+                                class="history-tab active"
+                                id="allRecipesBtn"
+                                data-filter="all"
+                                type="button"
+                            >
+                                All Recipes
+                            </button>
+
+                            <button
+                                class="history-tab"
+                                id="favoriteRecipesBtn"
+                                data-filter="favorites"
+                                type="button"
+                            >
+                                ❤️ Favorites
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="history-grid"
+                    id="historyGrid"
+                ></div>
+
+                <div
+                    class="history-empty"
+                    id="historyEmpty"
+                    hidden
+                >
+
+                    <div class="history-empty-icon">
+                        🍽️
+                    </div>
+
+                    <h3>
+                        No recipes yet
+                    </h3>
+
+                    <p>
+                        Generate your first recipe and it will appear here.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <div class="footer-brand">
+
+            🔍 CulinaVision AI
+            <span>•</span>
+            AI-Powered Food Intelligence
+
+        </div>
+
+        <p>
+            Built with FastAPI • PyTorch • Groq • GPT-OSS 120B
+        </p>
+
+    </footer>
+
+    <script src="/assets/js/script.js"></script>
+
+</body>
+
+</html>
