@@ -302,7 +302,7 @@ This resets the image-upload interface and allows another food image to be proce
                     ┌─────────────────────┐
                     │   Recipe Generator  │
                     │    Groq API         │
-                    │   GPT-OSS 120B     │
+                    │   GPT-OSS 120B      │
                     └──────────┬──────────┘
                                │
                                ▼
@@ -327,7 +327,7 @@ This resets the image-upload interface and allows another food image to be proce
                                │
                                ▼
                     ┌─────────────────────┐
-                    │   Web Application    │
+                    │   Web Application   │
                     │   FastAPI + JS      │
                     └─────────────────────┘
 ```
@@ -1051,7 +1051,7 @@ For production deployment, environment variables should be configured through th
                   │
                   ▼
         ┌───────────────────┐
-        │ Food Classification│
+        │Food Classification│
         └─────────┬─────────┘
                   │
                   ▼
@@ -1067,13 +1067,13 @@ For production deployment, environment variables should be configured through th
                   │
                   ▼
         ┌───────────────────┐
-        │   GPT-OSS 120B   │
+        │   GPT-OSS 120B    │
         │   via Groq API    │
         └─────────┬─────────┘
                   │
                   ▼
         ┌───────────────────┐
-        │ Recipe Intelligence│
+        │Recipe Intelligence│
         ├───────────────────┤
         │ Nutrition         │
         │ Timing            │
@@ -1237,5 +1237,3 @@ This project makes use of:
 
 If you find **CulinaVision AI** interesting, consider giving the repository a ⭐ on GitHub!
 
-```
-```
