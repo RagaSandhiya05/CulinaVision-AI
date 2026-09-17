@@ -260,6 +260,85 @@ After viewing a generated recipe, users can select:
 This resets the image-upload interface and allows another food image to be processed.
 
 
+## 📸 Application Screenshots
+
+### Home Page
+
+<img width="1067" height="426" alt="Screenshot 2026-09-17 182955" src="https://github.com/user-attachments/assets/d8de4970-afb4-44df-90c2-94003d86e06e" />
+
+### Food Image Upload
+
+<img width="1487" height="491" alt="Screenshot 2026-09-17 183559" src="https://github.com/user-attachments/assets/030e7845-f538-4278-9505-4b42a592a10c" />
+
+### Image Preview
+
+<img width="1452" height="632" alt="Screenshot 2026-09-17 183724" src="https://github.com/user-attachments/assets/0786eec2-0686-4ef5-8d42-a844567a4a02" />
+
+### Recipe Preferences Customization
+
+<img width="1476" height="477" alt="Screenshot 2026-09-17 184040" src="https://github.com/user-attachments/assets/6d87afee-97f9-4b72-a492-24cf96c41b56" />
+
+### Recipe Generation
+
+<img width="1455" height="287" alt="Screenshot 2026-09-17 184144" src="https://github.com/user-attachments/assets/c4c1b52d-910c-4502-a6ec-097ddc7df340" />
+
+### Detected Dish & Estimated Ingredients
+
+<img width="1465" height="557" alt="Screenshot 2026-09-17 184340" src="https://github.com/user-attachments/assets/526d1069-ba8f-480d-90f0-6315a4a9be45" />
+
+### Personalized Recipe
+
+<img width="1473" height="293" alt="Screenshot 2026-09-17 184424" src="https://github.com/user-attachments/assets/55d99884-f172-4d76-a8d9-2c837ffc02f0" />
+
+### Nutrition Information
+
+<img width="1475" height="353" alt="Screenshot 2026-09-17 184502" src="https://github.com/user-attachments/assets/f840dcb2-b620-4c50-8713-d9ca94fb096a" />
+
+### Ingredients
+
+<img width="1472" height="752" alt="Screenshot 2026-09-17 184548" src="https://github.com/user-attachments/assets/068412c8-80f7-4574-a19e-6782bc242c47" />
+
+### Cooking Instructions
+
+<img width="1475" height="432" alt="Screenshot 2026-09-17 184745" src="https://github.com/user-attachments/assets/37849008-4537-45fc-8e80-d3f4a445aa6c" />
+
+### Health Insights 
+
+<img width="1478" height="282" alt="Screenshot 2026-09-17 185022" src="https://github.com/user-attachments/assets/999ff41b-2aed-4f88-b93f-eb313abc21ef" />
+
+### Allergy Warnings
+
+<img width="1472" height="180" alt="Screenshot 2026-09-17 185136" src="https://github.com/user-attachments/assets/508b3c44-5ed9-41c3-8a5a-6f4ad6f35b13" />
+
+### Chef Tips
+
+<img width="1477" height="230" alt="Screenshot 2026-09-17 185220" src="https://github.com/user-attachments/assets/827cdf59-b583-48e3-8ab7-3a818615cb5b" />
+
+### Recipe History
+
+<img width="1477" height="562" alt="Screenshot 2026-09-17 185657" src="https://github.com/user-attachments/assets/69b3c20e-1e94-4ebd-888c-ec4864434aa5" />
+
+### Favorite Recipes
+
+<img width="1472" height="548" alt="Screenshot 2026-09-17 185749" src="https://github.com/user-attachments/assets/7d74bc95-1bd3-489a-9d20-b326a87dc964" />
+
+### Recipe Deletion
+
+<img width="1897" height="212" alt="Screenshot 2026-09-17 190427" src="https://github.com/user-attachments/assets/9d2b5782-59f1-4d07-9cc9-a1f74441e050" />
+
+### Non-Food Image Validation
+
+<img width="1481" height="111" alt="Screenshot 2026-09-17 190100" src="https://github.com/user-attachments/assets/a60eb981-dc5f-4a73-bc3b-d02a93b5afdc" />
+
+### SQLite Recipe Database
+
+<img width="1890" height="550" alt="Screenshot 2026-09-17 193307" src="https://github.com/user-attachments/assets/476a90f8-1cdc-4d47-b0d9-62050ca6b2ad" />
+
+### REST API Endpoints
+
+<img width="1897" height="861" alt="Screenshot 2026-09-17 193544" src="https://github.com/user-attachments/assets/b3345c21-a170-48b2-9710-557ceadeac83" />
+
+
 # 🧠 System Architecture
 
 ```text
@@ -531,40 +610,37 @@ Users can then:
 CulinaVision-AI/
 │
 ├── app/
-│   ├── __init__.py
+│   ├── food_classifier.py
+│   ├── food_validator.py
+│   ├── image_processor.py
+│   ├── ingredient_estimator.py
 │   ├── main.py
 │   ├── pipeline.py
-│   ├── food_validator.py
-│   ├── food_classifier.py
-│   ├── ingredient_estimator.py
+│   ├── recipe_database.py
 │   ├── recipe_generator.py
 │   ├── recipe_preferences.py
-│   └── recipe_database.py
-│
-├── data/
-│   └── recipes.db
+│   ├── test_ai.py
+│   └── test_validator.py
 │
 ├── assets/
 │   ├── css/
 │   │   └── style.css
 │   │
-│   ├── js/
-│   │   └── script.js
-│   │
 │   ├── images/
 │   │   └── test_food.jpg
 │   │
-│   └── uploads/
+│   └── js/
+│       └── script.js
 │
 ├── templates/
 │   └── index.html
 │
-├── test_database.py
-├── .env
 ├── .env.example
 ├── .gitignore
+├── .python-version
+├── README.md
 ├── requirements.txt
-└── README.md
+└── test_database.py
 ```
 
 > **Important:** `.env` and generated database/upload files should not be committed to GitHub.
